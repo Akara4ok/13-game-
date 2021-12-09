@@ -19,6 +19,16 @@ function onClose(forceUpdate) {
   isRules = false;
 }
 
+
+function getFacesArray(n, m) {
+  const faces = [];
+  for(let i = n; i <= m; i++ )
+  {
+    faces.push(`https://raw.githubusercontent.com/Akara4ok/13-game-/main/src/kubik/${i}.png`);
+  }
+  return faces;
+}
+
 function App() {
   const forceUpdate = useForceUpdate();
   return (
@@ -28,10 +38,10 @@ function App() {
       </header>
       <main>
         <div>
-          <Dice faces={['https://drive.google.com/file/d/1wxRmu4qZsMPnQmO6DaH_liQC64AQtRmg/view?usp=sharing']} triggers={['click', 'q']}/>
+          <Dice faces={getFacesArray(1, 6)} triggers={['click', 'q']}/>
         </div>
         <div>
-          <Dice triggers={['click', 'q']}/>
+          <Dice faces={getFacesArray(2, 7)} triggers={['click', 'q']}/>
         </div>
         {isRules ? (
           <Popup>
