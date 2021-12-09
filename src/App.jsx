@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./App.module.scss";
 import Button from "./Components/Button/Button";
 import Popup from "./Components/Popup/Popup";
 import Message from "./Components/Popup/Message";
-import Dice from 'react-dice-roll';
-
+import Dice from "react-dice-roll";
+import { fireEvent } from "@testing-library/react";
 
 let refresh = 0;
 let isRules = false;
@@ -19,12 +19,12 @@ function onClose(forceUpdate) {
   isRules = false;
 }
 
-
 function getFacesArray(n, m) {
   const faces = [];
-  for(let i = n; i <= m; i++ )
-  {
-    faces.push(`https://raw.githubusercontent.com/Akara4ok/13-game-/main/src/kubik/${i}.png`);
+  for (let i = n; i <= m; i++) {
+    faces.push(
+      `https://raw.githubusercontent.com/Akara4ok/13-game-/main/src/kubik/${i}.png`
+    );
   }
   return faces;
 }
@@ -37,11 +37,13 @@ function App() {
         <h1>Thirteen</h1>
       </header>
       <main>
-        <div>
-          <Dice faces={getFacesArray(1, 6)} triggers={['click', 'q']}/>
-        </div>
-        <div>
-          <Dice faces={getFacesArray(2, 7)} triggers={['click', 'q']}/>
+        <div id="dices" className={classes.dices}>
+          <div>
+            <Dice faces={getFacesArray(1, 6)} triggers={["click", "q"]} />
+          </div>
+          <div>
+            <Dice faces={getFacesArray(2, 7)} triggers={["click", "q"]} />
+          </div>
         </div>
         {isRules ? (
           <Popup>
@@ -84,8 +86,8 @@ function App() {
         <div className={classes.buttonMenu}>
           <Button
             onClick={() => {
-              forceUpdate();
-              refresh = 1 - refresh;
+              //forceUpdate();
+              //refresh = 1 - refresh;
             }}
           >
             New game

@@ -21,7 +21,7 @@ header {
   }
 }
 
-main {
+.dices {
   margin-top: 60px;
   width: 100%;
   display: flex;
@@ -31,7 +31,8 @@ main {
 }
 
 .buttonMenu {
-  margin-top: 10px;
+  margin-top: 40px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
