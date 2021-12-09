@@ -1,0 +1,21 @@
+* {
+  --button-background-color: #cacaca;
+  --button-border-color: rgb(71, 71, 71);
+  --button-shadow: rgba(0, 0, 0, 0.225);
+  --button-hover-background-color: rgb(255, 145, 0);
+}
+
+.myButton {
+  background-color: var(--button-background-color);
+  border-radius: 3px;
+  border: 1px solid var(--button-border-color);
+  margin: 10px;
+  padding: 5px;
+  box-shadow: 0 2px 5px 0 var(--button-shadow);
+  font-family: Ubuntu-Bold;
+  font-size: 30px;
+  &:hover {
+    background-color: var(--button-hover-background-color);
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,37 @@
+* {
+  --default-background-color: rgb(232, 232, 232);
+  --text-color: #403866;
+}
+
+:root {
+  background-color: var(--default-background-color);
+}
+
+.container {
+  width: 100%;
+}
+
+header {
+  text-align: center;
+  h1 {
+    color: var(--text-color);
+    font-family: Ubuntu-Bold;
+    font-size: 60px;
+    margin: 0px;
+  }
+}
+
+main {
+  margin-top: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  flex-wrap: wrap;
+}
+
+.buttonMenu {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
