@@ -64,16 +64,28 @@ main {
   input {
     display: none;
   }
-  input[id="1"]:checked ~ div label[for="1"] {
+  input[id="mul1"]:checked ~ div label[for="mul1"] {
     background-color: var(--button-hover-background-color);
   }
-  input[id="2"]:checked ~ div label[for="2"] {
+  input[id="mul2"]:checked ~ div label[for="mul2"] {
     background-color: var(--button-hover-background-color);
   }
-  input[id="3"]:checked ~ div label[for="3"] {
+  input[id="mul3"]:checked ~ div label[for="mul3"] {
     background-color: var(--button-hover-background-color);
   }
-  input[id="4"]:checked ~ div label[for="4"] {
+  input[id="mul4"]:checked ~ div label[for="mul4"] {
+    background-color: var(--button-hover-background-color);
+  }
+  input[id="div1"]:checked ~ div label[for="div1"] {
+    background-color: var(--button-hover-background-color);
+  }
+  input[id="div2"]:checked ~ div label[for="div2"] {
+    background-color: var(--button-hover-background-color);
+  }
+  input[id="div3"]:checked ~ div label[for="div3"] {
+    background-color: var(--button-hover-background-color);
+  }
+  input[id="div4"]:checked ~ div label[for="div4"] {
     background-color: var(--button-hover-background-color);
   }
   input[id="plus"]:checked ~ div label[for="plus"] {
@@ -106,21 +118,26 @@ main {
   margin-right: auto;
   font-size: 2rem;
   position: relative;
-  div{
+  div {
     margin-bottom: 20px;
   }
-  p{
+  p {
     margin-top: 5px;
     margin-bottom: 5px;
+    max-width: 300px;
+    max-height: 2rem;
+    word-wrap: normal;
+    white-space: nowrap;
   }
-  .scoreWrapper{
+  .scoreWrapper {
     color: var(--text-color);
     position: absolute;
     bottom: 170px;
     font-size: 2.1rem;
-    left: -60px;
     overflow: visible;
   }
+  width: 350px;
+  overflow: auto;
 }
 
 .endTurn {

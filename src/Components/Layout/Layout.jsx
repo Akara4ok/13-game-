@@ -23,11 +23,12 @@ class Layout extends React.Component {
       userLogs: [],
       botLogs: [],
       isNewGame: 0,
+      thrown: 0
     };
   }
 
   componentDidMount() {
-    document.getElementById("1").checked = true;
+    document.getElementById("mul1").checked = true;
     document.getElementById("plus").checked = true;
   }
 
@@ -50,6 +51,7 @@ class Layout extends React.Component {
     }
     this.gamesLog(mul, koef, userSum, currentSum, userLogs);
     userSum += currentSum * mul * koef;
+    userSum = +userSum.toFixed(2);
     this.setState(
       {
         currentSum: 0,
@@ -83,9 +85,9 @@ class Layout extends React.Component {
       console.log(botLogs);
       console.log(userLogs);
       botsSum = botsSum + currentSum;
+      botsSum = +botsSum.toFixed(2);
       console.log(userSum + " " + botsSum);
-      if(botLogs.length === 5)
-        this.setState({isNewGame: 1});
+      if (botLogs.length === 5) this.setState({ isNewGame: 1 });
       this.setState({
         isFirstClicked: false,
         isSecondClicked: false,
@@ -98,7 +100,11 @@ class Layout extends React.Component {
   };
 
   gamesLog(mul, koef, sum, currentSum, logs) {
-    logs.push(`${logs.length + 1}. ${sum} ${koef === 1 ? "+" : '-'}  ${mul}*${currentSum}`);
+    logs.push(
+      `${logs.length + 1}. ${sum} ${
+        koef === 1 ? "+" : "-"
+      }  ${mul}*${currentSum}`
+    );
   }
 
   newGame = () => {
@@ -118,7 +124,7 @@ class Layout extends React.Component {
       botLogs: [],
       isNewGame: 0,
     });
-  }
+  };
 
   render() {
     const {
@@ -133,7 +139,7 @@ class Layout extends React.Component {
       errorEndTurn,
       botsSum,
       userSum,
-      isNewGame
+      isNewGame,
     } = this.state;
     return (
       <>
@@ -143,7 +149,9 @@ class Layout extends React.Component {
         <main>
           <div className={classes.activityLabel}>
             <div>Bots activity</div>
-            {botLogs.map(element => <p>{element}</p>)}
+            {botLogs.map((element) => (
+              <p>{element}</p>
+            ))}
             <div className={classes.scoreWrapper}>Bots Score: {botsSum}</div>
           </div>
           <div className={classes.diceButtton}>
@@ -187,26 +195,46 @@ class Layout extends React.Component {
             </Button>
           </div>
           <div className={classes.UsersButton}>
-            <input type="radio" id="1" name="mul" />
-            <input type="radio" id="2" name="mul" />
-            <input type="radio" id="3" name="mul" />
-            <input type="radio" id="4" name="mul" />
+            <input type="radio" id="mul1" name="mul" />
+            <input type="radio" id="mul2" name="mul" />
+            <input type="radio" id="mul3" name="mul" />
+            <input type="radio" id="mul4" name="mul" />
+            <input type="radio" id="div1" name="mul" />
+            <input type="radio" id="div2" name="mul" />
+            <input type="radio" id="div3" name="mul" />
+            <input type="radio" id="div4" name="mul" />
             <input type="radio" id="plus" name="finalOperation" />
             <input type="radio" id="minus" name="finalOperation" />
             <div className={classes.row}>
-              <label for="1" onClick={() => this.setState({ mul: 1 })}>
+              <label for="mul1" onClick={() => this.setState({ mul: 1 })}>
                 x1
               </label>
-              <label for="2" onClick={() => this.setState({ mul: 2 })}>
+              <label for="mul2" onClick={() => this.setState({ mul: 2 })}>
                 x2
               </label>
             </div>
             <div className={classes.row}>
-              <label for="3" onClick={() => this.setState({ mul: 3 })}>
+              <label for="div1" onClick={() => this.setState({ mul: 1 })}>
+                /1
+              </label>
+              <label for="div2" onClick={() => this.setState({ mul: +(1/2).toFixed(2) })}>
+                /2
+              </label>
+            </div>
+            <div className={classes.row}>
+              <label for="mul3" onClick={() => this.setState({ mul: 3 })}>
                 x3
               </label>
-              <label for="4" onClick={() => this.setState({ mul: 4 })}>
+              <label for="mul4" onClick={() => this.setState({ mul: 4 })}>
                 x4
+              </label>
+            </div>
+            <div className={classes.row}>
+              <label for="div3" onClick={() => this.setState({ mul: +(1/3).toFixed(2) })}>
+                /3
+              </label>
+              <label for="div4" onClick={() => this.setState({ mul: +(1/4).toFixed(2) })}>
+                /4
               </label>
             </div>
             <div className={classes.row}>
@@ -220,7 +248,9 @@ class Layout extends React.Component {
           </div>
           <div className={classes.activityLabel}>
             <div>Your activity</div>
-            {userLogs.map(element => <p>{element}</p>)}
+            {userLogs.map((element) => (
+              <p>{element}</p>
+            ))}
             <div className={classes.scoreWrapper}>User Score: {userSum}</div>
           </div>
           {isRules ? (
@@ -251,16 +281,30 @@ class Layout extends React.Component {
           {errorEndTurn ? (
             <Popup>
               <Message onClose={() => this.setState({ errorEndTurn: false })}>
-                <p style={{fontSize: "2rem", margin: "0px"}}>Throw Dice!!!!</p>
+                <p style={{ fontSize: "2rem", margin: "0px" }}>
+                  Throw Dice!!!!
+                </p>
               </Message>
             </Popup>
           ) : null}
           {isNewGame ? (
             <Popup>
               <Message onClose={this.newGame}>
-                <p style={{textAlign: "center", fontSize: "2.5rem", margin: "0px"}}>Game Over</p>
-                <p style={{fontSize: "2rem", marginRight: "400px"}}>Your score: {userSum}</p>
-                <p style={{fontSize: "2rem", marginRight: "400px"}}>Bots score: {botsSum}</p>
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontSize: "2.5rem",
+                    margin: "0px",
+                  }}
+                >
+                  Game Over
+                </p>
+                <p style={{ fontSize: "2rem", marginRight: "400px", width: "fit-content", whiteSpace: "nowrap" }}>
+                  Your score: {userSum}
+                </p>
+                <p style={{ fontSize: "2rem", marginRight: "400px", width: "fit-content", whiteSpace: "nowrap" }}>
+                  Bots score: {botsSum}
+                </p>
               </Message>
             </Popup>
           ) : null}
