@@ -1,0 +1,133 @@
+header {
+  text-align: center;
+  h1 {
+    color: var(--text-color);
+    font-family: Ubuntu-Bold;
+    font-size: 60px;
+    margin: 0px;
+  }
+}
+
+.dices {
+  margin-top: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  flex-wrap: wrap;
+}
+
+.buttonMenu {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.diceButtton {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.score {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 5rem;
+  color: var(--text-color);
+}
+
+.UsersButton {
+  margin-top: 40px;
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  .row {
+    display: flex;
+  }
+  button {
+    width: 50px;
+    height: 50px;
+  }
+  :nth-child(3) {
+    margin-top: 70px;
+  }
+  input {
+    display: none;
+  }
+  input[id="1"]:checked ~ div label[for="1"] {
+    background-color: var(--button-hover-background-color);
+  }
+  input[id="2"]:checked ~ div label[for="2"] {
+    background-color: var(--button-hover-background-color);
+  }
+  input[id="3"]:checked ~ div label[for="3"] {
+    background-color: var(--button-hover-background-color);
+  }
+  input[id="4"]:checked ~ div label[for="4"] {
+    background-color: var(--button-hover-background-color);
+  }
+  input[id="plus"]:checked ~ div label[for="plus"] {
+    background-color: var(--button-hover-background-color);
+  }
+  input[id="minus"]:checked ~ div label[for="minus"] {
+    background-color: var(--button-hover-background-color);
+  }
+  label {
+    width: 40px;
+    height: 40px;
+    background-color: var(--button-background-color);
+    border-radius: 3px;
+    border: 1px solid var(--button-border-color);
+    margin: 10px;
+    padding: 5px;
+    box-shadow: 0 2px 5px 0 var(--button-shadow);
+    font-family: Ubuntu-Bold;
+    font-size: 30px;
+    text-align: center;
+    &:hover {
+      background-color: var(--button-hover-background-color);
+      cursor: pointer;
+    }
+  }
+}
+
+.activityLabel {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2rem;
+  position: relative;
+  div{
+    margin-bottom: 20px;
+  }
+  p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .scoreWrapper{
+    color: var(--text-color);
+    position: absolute;
+    bottom: 170px;
+    font-size: 2.1rem;
+    left: -60px;
+    overflow: visible;
+  }
+}
+
+.endTurn {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  button {
+    width: 400px;
+  }
+}
